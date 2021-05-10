@@ -165,13 +165,17 @@ EXPORT_SYMBOL(luaopen_string);
 EXPORT_SYMBOL(luaopen_table);
 EXPORT_SYMBOL(luaopen_utf8);
 
+int lunatik_dev_init(void);
+void lunatik_dev_fini(void);
+
 static int __init modinit(void)
 {
-        return 0;
+        return lunatik_dev_init();
 }
 
 static void __exit modexit(void)
 {
+	lunatik_dev_fini();
 }
 
 module_init(modinit);
